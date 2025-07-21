@@ -2,7 +2,7 @@ const sdl3 = @import("sdl3");
 const std = @import("std");
 
 pub fn main() !void {
-    const out = std.io.getStdOut().writer();
+    var out = std.fs.File.stdout().writerStreaming(&.{}).interface;
 
     // Setup an allocator.
     const allocator = std.heap.smp_allocator;

@@ -2,7 +2,7 @@ const sdl3 = @import("sdl3");
 const std = @import("std");
 
 pub fn main() !void {
-    const out = std.io.getStdOut().writer();
+    var out = std.fs.File.stderr().writerStreaming(&.{}).interface;
 
     // Paths available.
     try out.print("Application Directory: \"{s}\"\n", .{try sdl3.filesystem.getBasePath()});
